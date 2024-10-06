@@ -1,27 +1,38 @@
-import java.util.Scanner;
-
 public class StringProcessor {
+
     public static void main(String[] args) {
-        Main main = new Main();
-        Scanner scanner = new Scanner(System.in);
+        Main processor = new Main();
 
-        // Example interaction with user for strong password check
-        System.out.println("Enter a password to check if it is strong:");
-        String password = scanner.nextLine();
-        System.out.println("Is strong password: " + main.isStrongPassword(password));
+        // Test cases for isStrongPassword
+        System.out.println("isStrongPassword Tests:");
+        System.out.println(processor.isStrongPassword("Qwerty@1234")); // true
+        System.out.println(processor.isStrongPassword("abcd1234")); // false
+        System.out.println(processor.isStrongPassword("QWERTY1234!")); // false
+        System.out.println(processor.isStrongPassword("Abc!2345")); // true
+        System.out.println(processor.isStrongPassword("Weak1!")); // false
 
-        // Example of reading from a file for digit count
-        System.out.println("\nEnter the path to a file to count the number of digits:");
-        String filePathForDigits = scanner.nextLine();
-        int digitCount = main.calculateDigitsFromFile(filePathForDigits);
-        System.out.println("Number of digits in the file: " + digitCount);
+        // Test cases for calculateDigits
+        System.out.println("\ncalculateDigits Tests:");
+        System.out.println(processor.calculateDigits("Hello123World456")); // 6
+        System.out.println(processor.calculateDigits("NoDigitsHere!")); // 0
+        System.out.println(processor.calculateDigits("1234567890")); // 10
+        System.out.println(processor.calculateDigits("Mixed123Characters456")); // 6
+        System.out.println(processor.calculateDigits("")); // 0
 
-        // Example of reading from a file for word count
-        System.out.println("\nEnter the path to a file to count the number of words:");
-        String filePathForWords = scanner.nextLine();
-        int wordCount = main.calculateWordsFromFile(filePathForWords);
-        System.out.println("Number of words in the file: " + wordCount);
+        // Test cases for calculateWords
+        System.out.println("\ncalculateWords Tests:");
+        System.out.println(processor.calculateWords("This is a test sentence.")); // 5
+        System.out.println(processor.calculateWords("    Leading and trailing spaces    ")); // 4
+        System.out.println(processor.calculateWords("SingleWord")); // 1
+        System.out.println(processor.calculateWords("")); // 0
+        System.out.println(processor.calculateWords("Multiple   spaces between words.")); // 5
 
-        scanner.close();
+        // Test cases for calculateExpression
+        System.out.println("\ncalculateExpression Tests:");
+        System.out.println(processor.calculateExpression("3 + 5")); // 8.0
+        System.out.println(processor.calculateExpression("10 + 2 * 6")); // 22.0
+        System.out.println(processor.calculateExpression("100 * ( 2 + 12 ) / 14")); // 100.0
+        System.out.println(processor.calculateExpression("3.5 + 2.5 * 2")); // 8.5
+        System.out.println(processor.calculateExpression("( 10 + 20 ) * 3 / 2")); // 45.0
     }
 }
