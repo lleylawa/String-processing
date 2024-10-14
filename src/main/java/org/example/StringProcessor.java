@@ -1,6 +1,7 @@
+package org.example;
 import java.util.Stack;
 
-public class Main {
+public class StringProcessor {
 
     // Method to check if a password is strong
     public boolean isStrongPassword(String password) {
